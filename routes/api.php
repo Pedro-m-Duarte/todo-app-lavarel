@@ -6,13 +6,6 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\TodoListController;
 use App\Http\Controllers\Api\TaskController;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('/', function () {
-    return response()->json(['message' => 'Hello world!']);
-});
 
 // Authentication routes
 Route::prefix('auth')->group(function () {
