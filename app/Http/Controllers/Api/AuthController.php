@@ -77,10 +77,10 @@ class AuthController extends Controller
         }
     }
 
-public function me()
-{
-    return response()->json(auth('api')->user());
-}
+    public function me()
+    {
+        return response()->json(auth('api')->user());
+    }
     public function refresh()
     {
         try {

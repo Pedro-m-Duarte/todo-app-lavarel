@@ -10,16 +10,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/', function () {
+    return response()->json(['message' => 'Hello world!']);
+});
+
 // Authentication routes
 Route::prefix('auth')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:api');
-    Route::get('me', [AuthController::class, 'me'])->middleware('auth:api');
+    Route::post('logout', [AuthController::class, 'logout'])->middleware('jwt.auth');
+    Route::get('me', [AuthController::class, 'me'])->middleware('jwt.auth');
 });
 
 // Protected routes
-Route::middleware('auth:api')->group(function () {
+Route::middleware('jwt.auth')->group(function () {
     Route::apiResource('todo-lists', TodoListController::class);
     Route::apiResource('todo-lists.tasks', TaskController::class)->shallow();
 });
