@@ -109,3 +109,6 @@ php artisan serve
 ```
 
 # Observações
+- O frontend do projeto está no repositório https://github.com/Pedro-m-Duarte/frontend-task-manager-advisorh. 
+- Somente as rotas de login e register podem ser acessadas sem token
+  
